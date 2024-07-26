@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: cont1
-        image: iamtejas23/e-commerce:latest
+        image: iamtejas23/e-kart:latest
         ports:
           - containerPort: 80
 ---
@@ -30,4 +30,4 @@ spec:
     app: ecommerce
   ports:
     - port: 80
-      targetPort: 3000
+      targetPort: 80
