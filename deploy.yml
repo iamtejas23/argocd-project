@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: cont1
-        image: iamtejas23/e-commerce:latest
+        image: iamtejas23/e-kart:latest
         ports:
           - containerPort: 80
 ---
