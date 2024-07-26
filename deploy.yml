@@ -2,17 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: ecommerce
-  name: ecomm
+    app: train
+  name: train-deploy
 spec:
   replicas: 20
   selector:
     matchLabels:
-      app: ecommerce
+      app: train
   template:
     metadata:
       labels:
-        app: ecommerce
+        app: train
     spec:
       containers:
       - name: cont1
@@ -27,7 +27,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: ecommerce
+    app: train
   ports:
     - port: 80
       targetPort: 80
