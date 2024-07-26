@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: ecommerce
-  name: Ecomm
+  name: ecomm
 spec:
   replicas: 20
   selector:
