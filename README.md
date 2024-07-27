@@ -1,1 +1,2 @@
-https://i.imgur.com/xWOfBWb.gif
+![Dashboard Screenshot]([https://i.imgur.com/WpdOJGx.png](https://i.imgur.com/xWOfBWb.gif))
+
