@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ecommerce-app
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/iamtejas23/argocd-project.git
+    targetRevision: HEAD
+    path: manifests
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ecommerce
+
+  syncPolicy:
+    automated:
+      prune: true      # delete resources removed from git
+      selfHeal: true   # revert manual changes in the cluster
+    syncOptions:
+      - CreateNamespace=true

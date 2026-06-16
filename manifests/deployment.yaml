@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce
+  namespace: ecommerce
+  labels:
+    app: ecommerce
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ecommerce
+  template:
+    metadata:
+      labels:
+        app: ecommerce
+    spec:
+      containers:
+        - name: ecommerce
+          image: iamtejas23/e-kart:latest
+          ports:
+            - containerPort: 3000
