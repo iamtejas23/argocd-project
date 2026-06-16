@@ -19,4 +19,4 @@ spec:
         - name: ecommerce
           image: iamtejas23/e-kart:latest
           ports:
-            - containerPort: 3000
+            - containerPort: 80
