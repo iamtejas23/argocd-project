@@ -39,6 +39,14 @@ argocd-project/
 
 ## Setup Steps
 
+### Prerequisites
+
+- A running Kubernetes cluster and a working `kubectl` context with permission to create namespaces and workloads.
+- ArgoCD installed in the cluster (the steps below install it in the `argocd` namespace).
+- This repository must be reachable by the cluster. The example ArgoCD Application points to the public GitHub repository shown in `argocd/application.yaml`.
+
+The sample uses a `LoadBalancer` Service. A cluster needs a load balancer implementation to assign an external address; on local clusters, use the cluster's documented way to expose a `LoadBalancer` Service or change the Service type for your environment.
+
 ### 1. Install ArgoCD
 
 ```bash
@@ -66,6 +74,18 @@ kubectl apply -f argocd/application.yaml
 ```
 
 ArgoCD will immediately start syncing `manifests/` to your cluster.
+
+### 4. Check the deployment
+
+```bash
+kubectl get applications -n argocd
+kubectl get pods,svc -n ecommerce
+kubectl rollout status deployment/ecommerce -n ecommerce
+```
+
+The application should report `Synced` and `Healthy` in ArgoCD after the resources are ready. The Service's external address depends on your cluster; it can remain pending when no load balancer is configured.
+
+> **Note:** Automated sync is enabled with pruning and self-healing. Removing a resource from `manifests/` allows ArgoCD to delete it from the cluster, and manual changes to managed resources can be reverted. Use a disposable learning cluster for these exercises.
 
 ---
 
